@@ -1,0 +1,192 @@
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-4 mx-auto max-w-6xl">
+    <div class="border-0 rounded-lg shadow-lg w-full bg-gray-800 text-white outline-none focus:outline-none p-5">
+      <span class="font-bold text-red-500 float-right text-2xl cursor-pointer hover:text-white" (click)="toggleModal(null)">X</span>
+      <h1> Please Subscribe our Youtube Channel to download this.Project :) </h1>      
+      <div class="card-mail justify-center flex flex-col items-center my-10">          
+        <button  *ngIf="subscribe else unSubbutton" class="bg-green-500 hover:bg-green-600 hover:border-green-500  text-red-500  capitalize px-3 py-2 text-base md:text-lg rounded border-t border-r border-b border-red-500"> {{subscribeBtnText}} </button> <br>
+        <span  *ngIf="showDownload" class="text-white text-base md:text-lg"> if download not start, {{project.project_download_link}} <a href="{{project.project_download_link}}" class="underline text-green-500"><i>click here...</i></a> </span> 
+        <ng-template #unSubbutton>
+          <button (click)="SubscribeYt()" class="bg-red-500 hover:bg-red-600 hover:border-red-600 text-white  capitalize px-3 py-2 text-base md:text-lg rounded border-t border-r border-b border-red-500"> {{subscribeBtnText}}</button>  
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showUserForm" class="overflow-x-hidden fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto mx-auto max-w-6xl">
+    <div class="border-0 rounded-lg shadow-lg w-full bg-gray-800 text-white outline-none focus:outline-none p-5">
+      <span class="font-bold text-red-500 float-right text-2xl cursor-pointer hover:text-white" (click)="toggleuserFormModal()">X</span>
+      <div class="card-mail justify-center flex flex-col items-center p-1 mt-2">          
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!projectLoad" class="min-h-screen  bg-gradient-to-tr from-pink-300 to-pink-100 flex justify-center py-40">
+  <svg role="status" class="h-20 w-20 animate-spin  text-gray-200 dark:text-gray-600 fill-pink-600"
+		viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path
+			d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+			fill="currentColor" />
+		<path
+			d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+			fill="currentFill" />
+	</svg>
+</div>
+
+<section *ngIf="projectLoad" class="w-full min-h-screen text-pink-500  bg-gradient-to-tr from-pink-300 to-pink-100 py-10">
+    <div class="m-1">
+        <h2 class="bg-red-200 text-red-500 text-center underline p-2 tracking-widest projectHeading text-sm md:text-xlg"> <strong> {{project.project_name | uppercase}} {{project.timestamp | date:'y'}}</strong></h2>
+    </div>
+<div class="col-span-12 m-8">
+    <div class="overflow-auto lg:overflow-visible bg-pink-300 p-2">
+        <div class="flex justify-center items-center">
+            <div class="flex items-center mt-2 mb-4">
+              <svg class="mx-1 w-4 h-4 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="mx-1 w-4 h-4 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="mx-1 w-4 h-4 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="mx-1 w-4 h-4 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              <svg class="mx-1 w-4 h-4 fill-current text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center items-center ">
+        <table class="table text-gray-400 border-separate space-y-6 text-sm bg-pink-200 p-2">
+            <tbody>
+                <tr class="bg-gray-800">
+                    <td class="p-3 ">
+                        <span class="text-gray-100 mr-1 bg-red-500 rounded-md px-2"> Project Version  </span> :
+                        <span class="text-gray-100 bg-blue-600 rounded-md px-2"> {{project.project_version}} </span>
+                    </td>
+                </tr>
+                <tr class="bg-gray-800">
+                    <td class="p-3 ">
+                        <span class="text-gray-100 mr-1 bg-red-500 rounded-md px-2"> Project Name  </span> :
+                        <span class="text-gray-100 mr-1 bg-blue-600 rounded-md px-2"> {{project.project_name}}</span>
+                    </td>
+                </tr>
+                <tr class="bg-gray-800">
+                    <td class="p-3 ">
+                        <span class="text-gray-100 mr-1 bg-red-500 rounded-md px-2"> Programming Languages  </span> :
+                        <!-- <span class="text-gray-100 mr-1 bg-blue-800 rounded-md px-2"> HTML </span> <span class="text-gray-100 mr-1 bg-green-800 rounded-md px-2"> AJAX </span> <span class="text-gray-100 mr-1 bg-pink-500 rounded-md px-2"> PHP </span> <span class="text-gray-100 mr-1 bg-orange-500 rounded-md px-2"> Javascript </span> -->
+                        <span class="text-gray-100 mr-1 bg-blue-800 rounded-md px-2"> {{project.project_language}} </span> 
+                    </td>
+                </tr>
+                <tr class="bg-gray-800">
+                    <td class="p-3 ">
+                        <span class="text-gray-100 mr-1 bg-red-500 rounded-md px-2"> Publish Date  </span> :
+                        <span class="text-gray-100 mr-1 bg-blue-600 rounded-md px-2"> {{project.timestamp | date}} </span>
+                    </td>
+                </tr>
+                <tr class="bg-gray-800">
+                    <td class="p-3 ">
+                        <span class="text-gray-100 mr-1 bg-red-500 rounded-md px-2"> Description : </span>
+                        <span class="text-gray-100 mr-1 bg-blue-600 rounded-md px-2"> {{project.project_description}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+    <!-- End Project Details -->
+
+    <div class="flex justify-around">
+        <button  (click)="toggleModal(project)" class="bg-green-500 text-white hover:bg-green-600 p-2 rounded mx-1"> Download  <i class="fas fa-download"></i> </button>
+        <a href = "{{project.project_preview}}" target="blank" class="bg-red-500 text-white hover:bg-red-600 p-2 rounded mx-1"> Live Preview <i class="fas fa-eye"></i> </a>
+    </div>
+    <div class="relative my-8">
+        <div class="w-full border-t border-gray-300"></div>
+        <div class="w-full border-t border-gray-300 mt-1"></div>
+    </div>
+
+    <!-- Comment Form -->
+    <div class="mx-auto shadow-lg mx-8 mb-4 max-w-lg pb-2 bg-white">
+      <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2" [formGroup]="commentForm" (ngSubmit)="addComment()">
+        <div class="flex flex-wrap mx-2 mb-6 mt-1 ">
+          <div class="w-full md:w-full px-3 mt-2" (mouseover)="commentBox()">
+            <p class="px-1 text-center text-green-900 bg-pink-200 mb-1 text-sm rounded md:text-lg" *ngIf="commentLoad">{{commentPostMessage}}</p>
+             <textarea  class="w-100 bg-gray-100 text-black rounded border border-gray-400 leading-normal resize-none w-full h-15 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="projectComment" placeholder='Type Your Comment...' required formControlName = "comment"></textarea>
+         </div>
+          <div class="w-full md:w-full flex items-start md:w-full px-3">
+              <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                 <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                 </svg>
+                 <p class="text-xs sm:text-sm pt-px">Some HTML is okay.</p>
+              </div>
+              <div class="-mr-1">
+                <input type='submit' class="bg-pink-500 text-white font-medium py-1 px-4 border cursor-pointer border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-pink-600" value='Post Comment'>
+              </div>
+           </div>
+          </div>
+      </form>
+   </div>
+
+         <!-- comment section-->
+<div class="antialiased m-1 md:m-8 text-black bg-gray-100 p-2">
+  <h3 class="mb-4 text-lg font-semibold text-gray-900 text-semibold underline">Public Comments</h3>
+  <h2 class="mb-4 font-semibold text-green-900 text-semibold text-center" *ngIf="noComment"> No One  any comment posted yet, {{today|date:'medium'}}  <br> 🙌 <span class="text-green-500">Add your First Comment 😊</span></h2>
+  <div class="space-y-4">
+    <div class="flex" *ngFor="let comment of fetchedComment">
+      <div class="flex-shrink-0 mr-1">
+        <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src={{comment.profile}} alt="">
+      </div>
+      <div class="flex-1 border rounded-lg px-1 py-2 sm:px-2 sm:py-4 leading-relaxed ">
+        <span class="font-medium">{{comment.name | titleCase}}</span> <span class="text-xs text-gray-400"> posted at {{comment.timestamp | lowercase | date:'medium'}} </span>
+        <p class="text-sm">
+          {{comment.comment}}
+        </p>
+        <h4 class="my-5 uppercase tracking-wide text-gray-400 font-bold text-xs cursor-pointer" (click)="fetchReplies(comment.commentid)">Replies</h4>
+        <div class="space-y-4">
+          <div *ngFor="let reply of comment.replyBody">
+            <div class="flex" *ngIf="comment.commentid == reply.commentid">
+              <div class="flex-shrink-0 mr-1">
+                <img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src={{reply.profile}} alt="">
+              </div>
+              <div class="flex-1 bg-gray-100 rounded-lg px-1 py-2 sm:px-2 sm:py-4 leading-relaxed">
+                <span class="font-medium"> {{reply.name | titleCase}}</span> <span class="text-xs text-gray-400"> posted at {{reply.timestamp | date:'medium'}}</span>
+                <p class="text-xs sm:text-sm">
+                  {{reply.comment}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <form  [formGroup]="replyCommentForm" (ngSubmit)="addReplyComment(comment.commentid)">
+            <div class="w-full md:w-full px-3 mt-2">
+              <input  type="text"  class=" my-2 bg-gray-100 text-black rounded border border-gray-400 leading-normal w-full py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="projectComment" placeholder='Type a reply...' (keyup)="replyCommentBox()"  formControlName = "commentreply" required/>
+              <input *ngIf="showReplyCommentBox" type='submit' class="float-right bg-pink-500 text-white font-medium py-1 px-4 border cursor-pointer border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-pink-600" value='Post'>
+          </div>
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="mx-auto shadow-lg mx-8 mb-4 max-w-lg pb-2 bg-white" *ngIf="bottomPostCmt">
+  <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2" [formGroup]="commentForm" (ngSubmit)="addComment()">
+    <div class="flex flex-wrap mx-2 mb-6 mt-1 ">
+      <div class="w-full md:w-full px-3 mt-2" (mouseover)="commentBox()">
+        <p class="px-1 text-center text-green-900 bg-pink-200 mb-1 text-sm rounded md:text-lg" *ngIf="commentLoad">{{commentPostMessage}}</p>
+         <textarea  class="w-100 bg-gray-100 text-black rounded border border-gray-400 leading-normal resize-none w-full h-15 py-1 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="projectComment" placeholder='Type Your Comment...' required formControlName = "comment"></textarea>
+     </div>
+      <div class="w-full md:w-full flex items-start md:w-full px-3">
+          <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+             <svg fill="none" class="w-5 h-5 text-gray-600 mr-1" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+             </svg>
+             <p class="text-xs sm:text-sm pt-px">Some HTML is okay.</p>
+          </div>
+          <div class="-mr-1">
+            <input type='submit' class="bg-pink-500 text-white font-medium py-1 px-4 border cursor-pointer border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-pink-600" value='Post Comment'>
+          </div>
+       </div>
+      </div>
+  </form>
+</div>
+   
+</section>

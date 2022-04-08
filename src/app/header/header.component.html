@@ -1,0 +1,35 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="accent" class="example-toolbar">
+    <button mat-icon-button color="warn"(click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name"> Failure Boy</h1>
+    <span class="example-spacer"></span>
+    <div class="rounded focus:outline-none">
+      <input type="text" #searchData class="invisible sm:visible text-blue-500 shadow-lg shadow-yellow-500/50 focus:border-2 focus:border-blue-400 px-4 py-2 w-auto focus:outline-none rounded searchBtn" (keypress)="search(searchData)" placeholder="Search anything...">
+      <!-- <button class="px-1 border rounded border-pink-200 bg-pink-100 text-pink-500 hover:bg-pink-500 hover:text-white" (click)="loginAdminBtn()">{{this.ServiceAuth.loginBtnText}} </button> -->
+      <button *ngIf="this.userAuth.loginBtnText==='Logout' else loginBtn" class="px-1 border rounded border-green-200 bg-green-100 text-green-500 hover:bg-pink-500 hover:text-white" (click)="logoutUser()"> {{this.userAuth.loginBtnText}}</button>
+      <ng-template #loginBtn>
+        <button *ngIf="this.userAuth.loginBtnText==='Login' else loginBtn" class="px-1 border rounded border-green-200 bg-green-100 text-green-500 hover:bg-pink-500 hover:text-white" (click)="loginUserForm()" > {{this.userAuth.loginBtnText}}</button>
+      </ng-template>
+  </div>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home"> Home </a>
+        <a mat-list-item routerLink="/projects" routerLinkActive="active"> Project </a>
+        <a mat-list-item routerLink="/contact"> Contact </a>
+        <!-- <a mat-list-item href="https://dontknew.github.io/myself/" target="blank" routerLinkActive="active"> portfolio </a> -->
+        <a mat-list-item routerLink="/about"> About </a>
+        <button class="px-1 border rounded border-pink-200 bg-pink-100 text-pink-500 hover:bg-pink-500 hover:text-white" (click)="loginAdminBtn()">{{this.ServiceAuth.loginBtnText}} </button>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content>
+      <!-- <div class="top-heading"><i class="fas fa-code"></i><span>This Website is under Development</span><i class="fas fa-code code1"></i></div> -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
