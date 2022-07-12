@@ -1,0 +1,112 @@
+.auto-typer-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100vh;
+    background: url("../../assets/images/homeProfile.jpg") top center;
+    background-size: cover;
+    border-radius: 20px;
+    margin-bottom:50px;
+    border:1px solid black;
+}
+
+.auto-typer-image h1 {
+    color:#fff;
+    position: relative;
+    font-size:50px;
+    font-weight: 700;
+}
+.auto-typer-container p {
+    margin: 25px 0 10px 0;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #fff;
+    position: relative;
+    bottom:40px;
+}
+.auto-typer-container span {
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+.skills-title > h1{
+    text-decoration: underline;
+    text-decoration-color: red;
+    font-size:25px;
+    font-weight: bolder;
+}
+#skills{
+    margin:40px;
+    /* background-color: rgba(240, 235, 235, 0.74); */
+    /* padding:20px 20px 60px 20px; */
+}
+.htmlProgress{
+    width: 100%;
+    background-color: rgba(240, 17, 17, 0.082);
+    border-radius: 20px;
+}
+#htmlBar{
+    border-radius:20px;
+    text-align:center;
+    line-height: 30px;
+    color:white;
+}
+.html1{
+    width:100%;
+    background-color: rgb(236, 5, 5);
+}
+.css1{
+    width:80%;
+    background-color: rgb(236, 5, 120);
+}
+.php1{
+    width:75%;
+    background-color: rgb(220, 236, 5);
+}
+.javascript1{
+    width:70%;
+    background-color: rgb(47, 5, 236);
+}
+.jquery1{
+    width:70%;
+    background-color: rgb(6, 128, 52);
+}
+.mysql1{
+    width:60%;
+    background-color: rgb(15, 93, 117);
+}
+.ajax1{
+    width:60%;
+    background-color: rgb(12, 141, 109);
+}
+.responsive1{
+    width:100%;
+    background-color: rgb(177, 19, 224);
+}
+.angular1{
+    width:80%;
+    background-color: rgb(155, 5, 5);
+}
+
+.nodejs1{
+    width:50%;
+    background-color: rgb(155, 5, 67);
+}
+.skills-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap:25px;
+}
+.skills-container > .skills-1 > div, .skills-container > .skills-2 > div {
+    padding:10px;
+}
+.skills-container > .skills-2 > div > strong, .skills-container > .skills-1 > div > strong{
+    margin-left:10px;
+}
+.skills-container > div > div > strong {
+    position: relative;
+    bottom:5px;
+}

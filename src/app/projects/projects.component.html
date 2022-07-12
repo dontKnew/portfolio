@@ -1,0 +1,66 @@
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-4 mx-auto max-w-6xl">
+    <div class="border-0 rounded-lg shadow-lg w-full bg-gray-800 text-white outline-none focus:outline-none p-5">
+      <span class="font-bold text-red-500 float-right text-2xl cursor-pointer hover:text-white" (click)="toggleModal(null)">X</span>
+      <h1> Please Subscribe our Youtube Channel to download this.Project :) </h1>      
+      <div class="card-mail justify-center flex flex-col items-center my-10">          
+        <button  *ngIf="subscribe else unSubbutton" class="bg-green-500 hover:bg-green-600 hover:border-green-500  text-red-500  capitalize px-3 py-2 text-base md:text-lg rounded border-t border-r border-b border-red-500"> {{subscribeBtnText}} </button> <br>
+        <span  *ngIf="showDownload" class="text-white text-base md:text-lg"> if download not starting, {{downloadlink}} <a href="{{downloadlink}}" class="underline text-green-500"><i>click here...</i></a> </span> 
+        <ng-template #unSubbutton>
+          <button (click)="SubscribeYt()" class="bg-red-500 hover:bg-red-600 hover:border-red-600 text-white  capitalize px-3 py-2 text-base md:text-lg rounded border-t border-r border-b border-red-500"> {{subscribeBtnText}}</button>  
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!projectLoad" class="min-h-screen  bg-gradient-to-tr from-pink-300 to-pink-100 flex justify-center py-40">
+  <svg role="status" class="h-20 w-20 animate-spin  text-gray-200 dark:text-gray-600 fill-pink-600"
+		viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path
+			d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+			fill="currentColor" />
+		<path
+			d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+			fill="currentFill" />
+	</svg>
+</div>
+<div class="min-h-screen bg-gradient-to-tr from-pink-300 to-pink-100 pb-5" *ngIf="projectLoad">
+  <!-- <button routerLink="/"  class="backtoHome rounded bg-red-500 text-white p-2 text-md hover:bg-red-600 drop-shadow-xl shadow-white transform hover:scale-105 transition duration-500 border border-red-500"> Back to Home</button> -->
+  <h1 class="underline text-center pt-5 text-2xl"> BEST EVER WEB DEVELOPMENT PROJECTS  </h1> <br>
+  <p class="sm:px-20 mx-2 text-xl text-justify	">I have made some awesome project on based of <span class="text-blue-900">BOOTSTRAP CSS, HTML, JAVASCRIPT, PHP, AJAX, JQUERY etc. </span> which is helpful for your improve coding skills , You'll see <span class="text-blue-900"> live demo </span> and  <span class="text-blue-900">source code </span> availabe in this website just click on project below : -</p> <br>
+  <p class="text-center text-xl">Hope you'll enjoy my project! <br> Happy Coding :) </p>
+  <div class="flex justify-center items-center py-5">
+    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
+      <div *ngFor="let project of projectData"
+        class="max-w-sm  bg-white drop-shadow-xl shadow-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 drop-shadow-xl shadow-white transition duration-500">
+        <h3 class="mb-3 text-xl font-bold text-indigo-600">{{project.project_level | uppercase  }} </h3>
+        <div class="relative">
+          <!-- <span class="text-red-500 px-8 py-4 text-center" *ngIf="!noImage">loading Image...</span> -->
+          <img  alt="image" class="w-full rounded-xl" (loaded)="checkLoadingImage()"src="{{project.project_thumbnail}}" alt="Colors" />
+        </div>
+        <h1 class="mt-4 text-gray-800 text-xl font-bold cursor-pointer"> {{project.project_name | uppercase}} </h1>
+        <div class="my-4">
+          <div class="flex space-x-1 font-bold text-red-600">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-4" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </span>
+            <p> {{project.project_language | uppercase}} </p>
+          </div>
+          <p class="text-gray-600 text-justify"> {{project.project_description| lowercase | slice:0:150}} <a href="project/{{project.project_id}}"
+              class="text-blue-500 cursor-pointer hover:text-gray-900"> <i>Read more..</i> </a> </p>
+          <button (click)="previewlink(project)"
+            class="mt-4 text-xl  w-full  hover:underline hover:text-red-500 hover:bg-blue-400 bg-blue-500 p-2 rounded-xl shadow-lg">Preview <i class="fas fa-eye"></i></button>
+          <button  (click)="toggleModal(project)"
+            class="mt-4 text-xl  w-full hover:underline hover:text-red-500 hover:bg-green-400 bg-green-500 p-2 rounded-xl shadow-lg">
+            Download <i class="fas fa-download"></i> </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

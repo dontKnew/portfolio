@@ -1,0 +1,63 @@
+{
+  "comments": [
+    {
+      "comment": "Accha Bhai",
+      "username": "Sajid",
+      "email": "sai@gmail.com",
+      "replies": [],
+      "projectid": "2",
+      "date": "2022-02-17T18:26:30.936Z",
+      "id": 1
+    },
+    {
+      "comment": "Ohh Yaar Awesome",
+      "username": "Failure",
+      "email": "israfil123.sa@gmail.com",
+      "replies": [],
+      "projectid": "1",
+      "date": "2022-02-17T18:29:17.530Z",
+      "id": 2
+    },
+    {
+      "comment": "Ohh Yaar Awesome",
+      "username": "Failure",
+      "email": "israfil123.sa@gmail.com",
+      "replies": [],
+      "projectid": "1",
+      "date": "2022-02-17T18:29:17.530Z",
+      "commentid": 2,
+      "id": 3
+    }
+  ],
+  "repliesComment": [
+    {
+      "comment": "accha",
+      "username": "ter yaar",
+      "email": "yaar@gmail.com",
+      "replies": [],
+      "projectid": "1",
+      "date": "2022-02-17T18:29:17.530Z",
+      "commentid": 2,
+      "id": 1
+    },
+    {
+      "comment": "Helo",
+      "username": "Sajdi",
+      "email": "sajid@com",
+      "replies": [],
+      "date": "2022-02-18T16:24:50.961Z",
+      "commentid": 3,
+      "id": 2
+    }
+  ],
+  "myproject": [
+    
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "admin"
+    }
+  ]
+}

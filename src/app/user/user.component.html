@@ -1,0 +1,46 @@
+<div class=" my-5 outlin-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto mx-auto max-w-6xl">
+    <div class="border-0 rounded-lg shadow-lg w-full bg-gray-800 text-white outline-none focus:outline-none p-5">
+      <h1> Don't have an account ?  <span class ="text-blue-500 hover:underline hover:text-red-400 cursor-pointer" routerLink="/userCreate" > click here</span> </h1> 
+      <div class="card-mail justify-center flex flex-col items-center p-1 mt-2">          
+        <div class="w-full max-w-xs">
+          <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" #formUser ="ngForm" (ngSubmit)="loginUser(formUser.value)">
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Email :
+              </label>
+              <input #email="ngModel" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" type="text" placeholder="Username" ngModel required>
+              <p class="text-red-500 text-xs italic" *ngIf="email.invalid && email.touched">Please enter vaild email</p>
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Password : 
+              </label>
+              <input #password = "ngModel" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="**********" ngModel required>
+              <p class="text-red-500 text-xs italic" *ngIf="password.invalid && password.touched">Please enter vaild password</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <button *ngIf="formUser.invalid else loginBtn" class="bg-blue-300 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Sign In
+              </button>
+              <ng-template #loginBtn>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  Sign In
+                </button>
+              </ng-template>
+              <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                Forgot Password?
+              </a>
+            </div>
+          </form>
+          <p class="text-center text-gray-500 text-xs">
+            &copy;2020 FailureBoy. All rights reserved.
+          </p>
+        </div>      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
